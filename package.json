@@ -1,0 +1,35 @@
+{
+  "name": "soundscape-tv",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "gulp",
+    "test": "echo \"Please give me a test\"",
+    "start": "gulp server",
+    "build": "gulp",
+    "develop": "gulp watch"
+  },
+  "devDependencies": {
+    "babelify": "^6.0.2",
+    "backbone": "^1.1.2",
+    "browserify": "^9.0.8",
+    "del": "^1.1.1",
+    "express": "^4.12.3",
+    "gulp": "^3.8.11",
+    "gulp-less": "^3.0.3",
+    "gulp-livereload": "^3.8.0",
+    "gulp-manifest": "0.0.6",
+    "gulp-notify": "^2.2.0",
+    "jquery": "^2.1.4",
+    "react": "^0.13.1",
+    "react-tap-event-plugin": "^0.1.6",
+    "run-sequence": "^1.1.0",
+    "screenfull": "^2.0.0",
+    "underscore": "^1.8.3",
+    "velocity-animate": "^1.2.2",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

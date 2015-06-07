@@ -8,19 +8,13 @@ export default class MultiscreenService {
       app.setState({deviceName: service.name, ssid: service.device.ssid});
 
       // Create a reference to a communication "channel"
-      var channel = service.channel('com.samsung.soundscape');
+      var channel = service.channel('com.samsung.trailmix');
 
       // Connect to the channel
       channel.connect(function(err) {
         if (err) return console.error(err);
         console.log('You are connected!');
         app.channel = channel;
-      });
-
-      channel.on('assignColorRequest', function(data, client) {
-        var color = app.getColor();
-        console.log('assignColor: ' + client.id + ' => ' + color);
-        channel.publish('assignColor', color, client.id);
       });
 
       channel.on('appStateRequest', function(data, client) {
@@ -31,19 +25,14 @@ export default class MultiscreenService {
         }, client.id);
       });
 
-      channel.on('addTrack', function(data, client) {
-        console.log(client.id + '=> addTrack: ' + JSON.stringify(data));
-        app.addTrack(data);
-      });
-
-      channel.on('removeTrack', function(data, client) {
-        console.log(client.id + '=> removeTrack: ' + JSON.stringify(data));
-        app.removeTrack(data);
-      });
-
       channel.on('play', function(data, client) {
-        console.log(client.id + '=> play');
-        app.play();
+        console.log(client.id + '=> play: ' + JSON.stringify(data));
+        app.play(data);
+      });
+
+      channel.on('stop', function(data, client) {
+        console.log(client.id + '=> stop');
+        app.stop();
       });
 
       channel.on('pause', function(data, client) {
@@ -51,9 +40,9 @@ export default class MultiscreenService {
         app.pause();
       });
 
-      channel.on('next', function(data, client) {
-        console.log(client.id + '=> next');
-        app.fadeToNext();
+      channel.on('resume', function(data, client) {
+        console.log(client.id + '=> resume');
+        app.resume();
       });
 
       channel.on('replay', function(data, client) {

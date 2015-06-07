@@ -47,7 +47,7 @@ export default class App extends React.Component {
 
   play(video) {
     console.log('play: ' + video.id);
-    this.setState({video: video});
+    this.setState({video: video, play: true});
   }
 
   stop() {
@@ -77,6 +77,7 @@ export default class App extends React.Component {
 
   _onVideoEnded() {
     console.log('** Video Ended **');
+    this.setState({video: null});
   }
 
   _onTimeUpdate(time) {
@@ -86,7 +87,11 @@ export default class App extends React.Component {
   render() {
     var video = this.state.video;
 
-    if (!video) return(<IdleScreen app={this} />);
+    if (!video) {
+      return(
+          <IdleScreen app={this} />
+      );
+    }
     return (
       <div id="trailmix-app">
         <VideoPlayer
@@ -109,7 +114,7 @@ export default class App extends React.Component {
 var IdleScreen = React.createClass({
   render: function() {
     return (
-      <div id="info-screen">
+      <div id="idle-screen">
         <div id="tv-info">
           <p>{this.props.app.deviceName}</p>
           <p>{this.props.app.ssid? 'On ' + this.props.app.ssid : ''}</p>
@@ -127,7 +132,7 @@ var StatusIcon = React.createClass({
   render: function() {
     var status = this.props.play? 'play' : 'pause';
     return (
-      <div id="statusIcon" className={status}>
+      <div id="status-icon" className={status}>
       </div>
     );
   }
@@ -136,7 +141,7 @@ var StatusIcon = React.createClass({
 var VideoInfo = React.createClass({
   render: function() {
     return (
-      <div id="VideoInfo">
+      <div id="video-info">
         <div className="title">{this.props.video.title}</div>
       </div>
     );

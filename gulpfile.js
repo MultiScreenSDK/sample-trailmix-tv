@@ -106,7 +106,8 @@ gulp.task('clean',['clean:tv']);
 
 /* Builds */
 gulp.task('build:tv', function(callback) {
-  runSequence('clean:tv', ['scripts:tv','styles:tv', 'statics:tv'], ['manifest:tv'], callback);
+  // runSequence('clean:tv', ['scripts:tv','styles:tv', 'statics:tv'], ['manifest:tv'], callback);
+  runSequence('clean:tv', ['scripts:tv','styles:tv', 'statics:tv'], callback);
 });
 
 gulp.task('build',['build:tv']);

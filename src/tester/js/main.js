@@ -101,7 +101,7 @@ $(function () {
     };
 
     var initUI = function () {
-        txtConnectUrl.val('ws://127.0.0.1:8001/api/v2/channels/com.samsung.soundscape');
+        txtConnectUrl.val('ws://127.0.0.1:8001/api/v2/channels/com.samsung.trailmix');
         btnDisconnect.prop("disabled", true);
         btnSend.prop("disabled", true);
         for (var key in methods) {
@@ -119,58 +119,38 @@ $(function () {
 
 
     var methods = {
-
-        "addTrack (My Delirium) ": {
-            "method": "ms.channel.emit",
-            "params": {
-                "event": "addTrack",
-                "data": {
-                    "id" : "129378641982734",
-                    "artist": "Ladyhawke",
-                    "album": "Ladyhawke",
-                    "title": "My Delirium",
-                    "duration": 256,
-                    "file": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/songs/Ladyhawke - Ladyhawke - My Delirium.mp3",
-                    "albumArt": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/Ladyhawke-Ladyhawke.jpg",
-                    "albumArtThumbnail": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/Ladyhawke-Ladyhawke-thumbnail.jpg",
-                    "color": "#01579b"
-                },
-                "to": "broadcast"
-            }
-        },
-
-        "addTrack (Mos Def)": {
-            "method": "ms.channel.emit",
-            "params": {
-                "event": "addTrack",
-                "data": {
-                    "id" : "129378456342734",
-                    "artist": "DJ Honda feat Mos Def",
-                    "album": "Travellin Man",
-                    "title": "Travellin Man",
-                    "duration": 317,
-                    "file": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/songs/DJ Honda feat Mos Def - Travellin Man - Travellin Man.mp3",
-                    "albumArt": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/DJ Honda feat Mos Def-Travellin Man.jpg",
-                    "albumArtThumbnail": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/DJ Honda feat Mos Def-Travellin Man-thumbnail.jpg",
-                    "color": "#673ab7"
-                },
-                "to": "broadcast"
-            }
-        },
-
-        "removeTrack (Mos Def)": {
-            "method": "ms.channel.emit",
-            "params": {
-                "event": "removeTrack",
-                "data": "129378456342734",
-                "to": "broadcast"
-            }
-        },
-
-        "play": {
+        "play (Mad Max: Fury Road) ": {
             "method": "ms.channel.emit",
             "params": {
                 "event": "play",
+                "data": {
+                    "id" : "129378641982734",
+                    "title": "Mad Max: Fury Road",
+                    "duration": 144,
+                    "file": "https://s3.amazonaws.com/dev-multiscreen-video-library/trailers/Mad_Max_Fury_Road_2015_Trailer_F4_5.1-1080p-HDTN.mp4",
+                },
+                "to": "broadcast"
+            }
+        },
+
+        "play (Mission: Impossible - Rogue Nation) ": {
+            "method": "ms.channel.emit",
+            "params": {
+                "event": "play",
+                "data": {
+                    "id" : "129378641982734",
+                    "title": "Mission: Impossible - Rogue Nation",
+                    "duration": 151,
+                    "file": "https://s3.amazonaws.com/dev-multiscreen-video-library/trailers/MissionImpossible5_TLR-2_5.1-1080p-HDTN.mp4",
+                },
+                "to": "broadcast"
+            }
+        },
+
+        "stop": {
+            "method": "ms.channel.emit",
+            "params": {
+                "event": "stop",
                 "to": "broadcast"
             }
         },
@@ -183,36 +163,44 @@ $(function () {
             }
         },
 
-        "next": {
+        "resume": {
             "method": "ms.channel.emit",
             "params": {
-                "event": "next",
+                "event": "resume",
                 "to": "broadcast"
             }
         },
 
-        "trackStart": {
+        "replay": {
             "method": "ms.channel.emit",
             "params": {
-                "event": "trackStart",
+                "event": "replay",
+                "to": "broadcast"
+            }
+        },
+
+        "videoStart": {
+            "method": "ms.channel.emit",
+            "params": {
+                "event": "videoStart",
                 "data": "129378641982734",
                 "to": "broadcast"
             }
         },
 
-        "trackEnd": {
+        "videoEnd": {
             "method": "ms.channel.emit",
             "params": {
-                "event": "trackEnd",
+                "event": "videoEnd",
                 "data": "129378641982734",
                 "to": "broadcast"
             }
         },
 
-        "trackStatus": {
+        "videoStatus": {
             "method": "ms.channel.emit",
             "params": {
-                "event": "trackStatus",
+                "event": "videoStatus",
                 "data": {
                     id : "129378641982734",
                     time : "127",
@@ -230,7 +218,6 @@ $(function () {
             }
         },
 
-
         "appState": {
             "method": "ms.channel.emit",
             "params": {
@@ -241,49 +228,11 @@ $(function () {
                         time : "127",
                         state : "playing"
                     },
-                    playlist : [
-                        {
-                            "id" : "129378641982734",
-                            "artist": "Ladyhawke",
-                            "album": "Ladyhawke",
-                            "title": "My Delirium",
-                            "duration": 256,
-                            "file": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/songs/Ladyhawke - Ladyhawke - My Delirium.mp3",
-                            "albumArt": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/Ladyhawke-Ladyhawke.jpg",
-                            "albumArtThumbnail": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/Ladyhawke-Ladyhawke-thumbnail.jpg",
-                            "color": "#01579b"
-                        },
-                        {
-                            "id" : "12937fgfds2734",
-                            "artist": "City and Colour",
-                            "album": "Alternative Times, Volume 97",
-                            "title": "Sleeping Sickness",
-                            "duration": 248,
-                            "file": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/songs/City and Colour - Alternative Times, Volume 97 - Sleeping Sickness.mp3",
-                            "albumArt": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/City and Colour-Alternative Times, Volume 97.jpg",
-                            "albumArtThumbnail": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/City and Colour-Alternative Times, Volume 97-thumbnail.jpg",
-                            "color": "#e65100"
-                        },
-                        {
-                            "id" : "1293453245982734",
-                            "artist": "k.flay",
-                            "album": "Eyes Shut",
-                            "title": "Sunburn",
-                            "duration": 237,
-                            "file": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/songs/k.flay - Eyes Shut - Sunburn.mp3",
-                            "albumArt": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/k.flay-Eyes Shut.jpg",
-                            "albumArtThumbnail": "http://s3-us-west-1.amazonaws.com/dev-multiscreen-music-library/artwork/k.flay-Eyes Shut-thumbnail.jpg",
-                            "color": "#e65100"
-                        }
-                    ]
                 },
                 "to": "broadcast"
             }
         }
-
     };
 
     initUI();
-
-
 });

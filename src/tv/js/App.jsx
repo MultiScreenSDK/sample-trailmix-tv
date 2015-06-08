@@ -87,11 +87,12 @@ export default class App extends React.Component {
   render() {
     var video = this.state.video;
 
-    if (!video) {
-      return(
-          <IdleScreen app={this} />
-      );
-    }
+    if (!video) return (
+          <div id="trailmix-app">
+            <IdleScreen app={this} />
+          </div>
+        );
+
     return (
       <div id="trailmix-app">
         <VideoPlayer
@@ -103,7 +104,7 @@ export default class App extends React.Component {
           onTimeUpdate={this._onTimeUpdate.bind(this)}
           controls={this.props.params} />
         <StatusIcon play={this.state.play} />
-        <VideoInfo video={video} time={this.state.time} />
+        <VideoInfo video={video} time={this.state.time} play={this.state.play} />
       </div>
     );
   }
@@ -140,8 +141,10 @@ var StatusIcon = React.createClass({
 
 var VideoInfo = React.createClass({
   render: function() {
+    if (!this.props.video) return null;
+    var transition = this.props.play? 'play' : 'pause';
     return (
-      <div id="video-info">
+      <div id="video-info" className={transition + "-transition"}>
         <div className="title">{this.props.video.title}</div>
       </div>
     );

@@ -87,6 +87,33 @@ Published to the TV (host) so it will resume playing the video after a pause.
 }
 ```
 
+####seek
+**client -> host**
+Published to the TV (host) to seek to a specific time in the current video.
+```javascript
+{
+    "method": "ms.channel.emit",
+    "params": {
+        "event": "seek",
+        "data": 100,      // seek to 100 secs
+        "to": "host"
+    }
+}
+```
+
+####replay
+**client -> host**
+Published to the TV (host) to seek to replay the current video from the beginning.
+```javascript
+{
+    "method": "ms.channel.emit",
+    "params": {
+        "event": "replay",
+        "to": "host"
+    }
+}
+```
+
 ####appState
 **host -> client**
 Sent to an individual client as a response to a 'appStateRequest' event. This response includes the id of the video currently playing.

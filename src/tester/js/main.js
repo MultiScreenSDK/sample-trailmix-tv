@@ -163,6 +163,15 @@ $(function () {
             }
         },
 
+        "seek": {
+            "method": "ms.channel.emit",
+            "params": {
+                "event": "seek",
+                "data": 100,
+                "to": "broadcast"
+            }
+        },
+
         "resume": {
             "method": "ms.channel.emit",
             "params": {

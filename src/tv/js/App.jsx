@@ -9,7 +9,8 @@ export default class App extends React.Component {
     this.state = {
       video: null,
       play: true,
-      time: 0,
+      currentTime: 0,
+      seekTime: -1,
       volume: 1.0,
       deviceName: null,
       ssid: null,
@@ -22,7 +23,7 @@ export default class App extends React.Component {
     return this.state.video? {
       id: this.state.video.id,
       state: this.state.play? 'playing' : 'paused',
-      time: this.state.time,
+      time: this.state.currentTime,
       volume: this.state.volume
     } : {};
   }
@@ -55,14 +56,24 @@ export default class App extends React.Component {
     this.setState({video: null});
   }
 
+  pause() {
+    console.log('pause');
+    this.setState({play: false});
+  }
+
   resume() {
     console.log('play');
     this.setState({play: true});
   }
 
-  pause() {
-    console.log('pause');
-    this.setState({play: false});
+  seek(seekTime) {
+    console.log('seek');
+    this.setState({seekTime: seekTime});
+  }
+
+  replay() {
+    console.log('seek');
+    this.setState({seekTime: 0});
   }
 
   volUp() {
@@ -80,8 +91,12 @@ export default class App extends React.Component {
     this.setState({video: null});
   }
 
-  _onTimeUpdate(time) {
-    this.setState({time: time});
+  _onTimeUpdate(currentTime) {
+    this.setState({currentTime: currentTime});
+  }
+
+  _resetSeek() {
+    this.setState({seekTime: -1});
   }
 
   render() {
@@ -99,12 +114,14 @@ export default class App extends React.Component {
           ref="audioPlayer"
           video={video}
           play={this.state.play}
+          seekTime={this.state.seekTime}
           volume={this.state.volume}
           onVideoEnded={this._onVideoEnded.bind(this)}
           onTimeUpdate={this._onTimeUpdate.bind(this)}
+          resetSeek={this._resetSeek.bind(this)}
           controls={this.props.params} />
         <StatusIcon play={this.state.play} />
-        <VideoInfo video={video} time={this.state.time} play={this.state.play} />
+        <VideoInfo video={video} play={this.state.play} />
       </div>
     );
   }

@@ -45,6 +45,11 @@ export default class MultiscreenService {
         app.resume();
       });
 
+      channel.on('seek', function(data, client) {
+        console.log(client.id + '=> seek: ' + JSON.stringify(data));
+        app.seek(data);
+      });
+
       channel.on('replay', function(data, client) {
         console.log(client.id + '=> replay');
         app.replay();

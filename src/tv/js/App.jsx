@@ -122,6 +122,7 @@ export default class App extends React.Component {
           controls={this.props.params} />
         <StatusIcon play={this.state.play} />
         <VideoInfo video={video} play={this.state.play} />
+        <progress max={video.duration} value={this.state.currentTime}></progress>
       </div>
     );
   }

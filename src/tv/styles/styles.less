@@ -144,3 +144,18 @@ progress {
   width: 1280px;
   height: 720px;
 }
+
+progress {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  &::-webkit-progress-value {
+    background-color: #e91e63;
+  }
+  &::-webkit-progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+  }
+}

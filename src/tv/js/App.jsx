@@ -13,7 +13,7 @@ export default class App extends React.Component {
       seekTime: -1,
       volume: 1.0,
       deviceName: null,
-      ssid: null,
+      ssid: null
     };
     this.channel = null;
     this.clients = 0;
@@ -21,6 +21,8 @@ export default class App extends React.Component {
 
   getCurrentStatus() {
     return this.state.video? {
+      title: this.state.video.title,
+      duration: this.state.video.duration,
       id: this.state.video.id,
       state: this.state.play? 'playing' : 'paused',
       time: this.state.currentTime,
@@ -160,9 +162,8 @@ var StatusIcon = React.createClass({
 var VideoInfo = React.createClass({
   render: function() {
     if (!this.props.video) return null;
-    var transition = this.props.play? 'play' : 'pause';
     return (
-      <div id="video-info" className={transition + "-transition"}>
+      <div id="video-info" className="fade-in-out">
         <div className="title">{this.props.video.title}</div>
       </div>
     );

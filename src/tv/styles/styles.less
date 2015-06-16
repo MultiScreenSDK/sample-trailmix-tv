@@ -46,8 +46,6 @@ body{
 #video-info {
   position: absolute;
   top: 0px;
-  // max-width: 66.67%;
-  // min-height: 18.5%;
   font-weight: 200;
   background: rgba(0, 0, 0, 0.4);
   padding-left: 7.8125%;
@@ -57,18 +55,18 @@ body{
   }
 }
 
-.pause-transition {
-  opacity: 1;
-  transition: opacity .5s ease-in-out;
-  -moz-transition: opacity .5s ease-in-out;
-  -webkit-transition: opacity .5s ease-in-out;
-}
-.play-transition {
-  opacity: 0;
-  transition: opacity 3s ease-in-out 1s;
-  -moz-transition: opacity 3s ease-in-out 1s;
-  -webkit-transition: opacity 3s ease-in-out 1s;
-}
+// .pause-transition {
+//   opacity: 1;
+//   transition: opacity .5s ease-in-out;
+//   -moz-transition: opacity .5s ease-in-out;
+//   -webkit-transition: opacity .5s ease-in-out;
+// }
+// .play-transition {
+//   opacity: 0;
+//   transition: opacity 3s ease-in-out 1s;
+//   -moz-transition: opacity 3s ease-in-out 1s;
+//   -webkit-transition: opacity 3s ease-in-out 1s;
+// }
 
 #status-icon {
   top: 42%;
@@ -90,21 +88,6 @@ body{
     transition: opacity 3s ease-in-out 1s;
     -moz-transition: opacity 3s ease-in-out 1s;
     -webkit-transition: opacity 3s ease-in-out 1s;
-  }
-}
-
-progress {
-  width: 100%;
-  margin-bottom: 0px;
-  padding-top: 6px;
-  -webkit-appearance: none;
-  appearance: none;
-  &::-webkit-progress-value {
-    background-color: #fff;
-  }
-  &::-webkit-progress-bar {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.5);
   }
 }
 
@@ -141,8 +124,10 @@ progress {
 }
 
 #player {
-  width: 1280px;
-  height: 720px;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
 }
 
 progress {
@@ -157,5 +142,57 @@ progress {
   &::-webkit-progress-bar {
     height: 8px;
     background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.fade-in-out {
+  opacity: 0;
+  -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -moz-animation-name: fade-in-out;
+  -webkit-animation-name: fade-in-out;
+  animation-name: fade-in-out;
+}
+
+// @-moz-keyframes fade-in-out {
+//   from {
+//     opacity: 0;
+//   }
+//
+//   25% {
+//     opacity: 1;
+//   }
+//
+//   to {
+//     opacity: 0;
+//   }
+// }
+
+@-webkit-keyframes fade-in-out {
+  from {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in-out {
+  from {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
   }
 }

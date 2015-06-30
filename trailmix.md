@@ -48,6 +48,23 @@ Published to TV (host) to play a video. Payload is a video model.
 }
 ```
 
+You can add a `time` parameter to the video object to start playing at the specified time.
+```javascript
+{
+    "event": "play",
+    "data": {
+        "id" : "129378641982734", // This id needs be generated and unique per play
+        "title": "Mad Max: Fury Road",
+        "duration": 144,
+        "time": 100,
+        "file": "https://s3.amazonaws.com/dev-multiscreen-video-library/trailers/Mad_Max_Fury_Road_2015_Trailer_F4_5.1-1080p-HDTN.mp4",
+    },
+    "to": "host"
+}
+```
+
+
+
 ####stop
 **client -> host**
 Published to the TV (host) so it will stop playing the video and show the idle screen.

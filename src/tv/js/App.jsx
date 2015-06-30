@@ -51,6 +51,7 @@ export default class App extends React.Component {
   play(video) {
     console.log('play: ' + video.id);
     this.setState({video: video, play: true});
+    if (video.time) this.seek(video.time);
   }
 
   stop() {

@@ -21,19 +21,19 @@ export default class VideoPlayer extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     var player = React.findDOMNode(this);
 
-    // play/stop if the "play" prop changed while fading up/down vol
+    // seek
+    if (this.props.seekTime > -1) {
+      player.currentTime = this.props.seekTime;
+      this.props.resetSeek();
+    }
+
+    // play/stop if the "play" prop changed
     if (this.props.play != prevProps.play) {
       this.props.play? player.play() : player.pause();
     }
 
     // set the vol, if it changed
     if (this.props.volume != prevProps.volume) player.volume = this.props.volume;
-
-    // seek
-    if (this.props.seekTime > -1) {
-      player.currentTime = this.props.seekTime;
-      this.props.resetSeek();
-    }
   }
 
   render() {

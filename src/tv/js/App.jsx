@@ -39,19 +39,21 @@ export default class App extends React.Component {
     // send videoStart and videoEnd messages
     var currentVideoId = this.state.video? this.state.video.id : null;
     var prevVideoId = prevState.video? prevState.video.id : null;
-    if (currentVideoId != prevVideoId) {
-      // video changed
-      if (prevVideoId) this.channel.publish('videoEnd', prevVideoId, 'broadcast'); // prev video finished
-      if (currentVideoId) this.channel.publish('videoStart', currentVideoId, 'broadcast'); // new video started
+    if (this.channel) {
+      // channel notifications
+      if (currentVideoId != prevVideoId) {
+        // videoEnd and start
+        if (prevVideoId) this.channel.publish('videoEnd', prevVideoId, 'broadcast'); // prev video finished
+        if (currentVideoId) this.channel.publish('videoStart', currentVideoId, 'broadcast'); // new video started
+      }
+      // videoStatus message
+      if (this.state.currentTime != prevState.currentTime) this.channel.publish('videoStatus', this.getCurrentStatus(), 'broadcast');
     }
-    // videoStatus message
-    if (this.channel) this.channel.publish('videoStatus', this.getCurrentStatus(), 'broadcast');
   }
 
   play(video) {
     console.log('play: ' + video.id);
-    this.setState({video: video, play: true});
-    if (video.time) this.seek(video.time);
+    this.setState({video: video, play: true, seekTime: video.time});
   }
 
   stop() {

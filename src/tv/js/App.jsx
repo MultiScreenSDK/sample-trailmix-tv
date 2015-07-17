@@ -53,7 +53,8 @@ export default class App extends React.Component {
 
   play(video) {
     console.log('play: ' + video.id);
-    this.setState({video: video, play: true, seekTime: video.time});
+    var state = !(video.state === 'paused');
+    this.setState({video: video, play: state, seekTime: video.time});
   }
 
   stop() {
@@ -93,7 +94,7 @@ export default class App extends React.Component {
 
   _onVideoEnded() {
     console.log('** Video Ended **');
-    this.setState({video: null});
+    // this.setState({video: null});
   }
 
   _onTimeUpdate(currentTime) {

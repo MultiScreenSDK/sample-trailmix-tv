@@ -28,8 +28,10 @@ export default class VideoPlayer extends React.Component {
     }
 
     // play/stop if the "play" prop changed
-    if (this.props.play != prevProps.play) {
-      this.props.play? player.play() : player.pause();
+    if (this.props.play) {
+      if (!prevProps.play) player.play();
+    } else {
+      player.pause();
     }
 
     // set the vol, if it changed

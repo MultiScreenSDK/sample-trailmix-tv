@@ -211,6 +211,8 @@ $(function () {
             "params": {
                 "event": "videoStatus",
                 "data": {
+                    title: "Mission: Impossible - Rogue Nation",
+                    duration: 151,
                     id : "129378641982734",
                     time : "127",
                     state : "playing"
@@ -233,6 +235,8 @@ $(function () {
                 "event": "appState",
                 "data": {
                     currentStatus : {
+                        title: "Mission: Impossible - Rogue Nation",
+                        duration: 151,
                         id : "129378641982734",
                         time : "127",
                         state : "playing"

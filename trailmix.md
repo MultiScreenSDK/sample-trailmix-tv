@@ -48,6 +48,22 @@ Published to TV (host) to play a video. Payload is a video model.
 }
 ```
 
+You can add a `state` parameter to the video object and set it to the string "paused"
+to send a video to the TV, but pause it.
+```javascript
+{
+    "event": "play",
+    "data": {
+        "id" : "129378641982734", // This id needs be generated and unique per play
+        "title": "Mad Max: Fury Road",
+        "duration": 144,
+        "state": "paused",
+        "file": "https://s3.amazonaws.com/dev-multiscreen-video-library/trailers/Mad_Max_Fury_Road_2015_Trailer_F4_5.1-1080p-HDTN.mp4",
+    },
+    "to": "host"
+}
+```
+
 You can add a `time` parameter to the video object to start playing at the specified time.
 ```javascript
 {
@@ -62,8 +78,6 @@ You can add a `time` parameter to the video object to start playing at the speci
     "to": "host"
 }
 ```
-
-
 
 ####stop
 **client -> host**

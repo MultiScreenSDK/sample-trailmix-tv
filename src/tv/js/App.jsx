@@ -145,8 +145,6 @@ var IdleScreen = React.createClass({
           <p>{this.props.app.ssid? 'On ' + this.props.app.ssid : ''}</p>
         </div>
         <div id="app-info">
-          <img src='images/qr_code.jpg' id="qr-code"/>
-          <span><p>Start the TrailerMix mobile web app at bit.ly/xyz.</p><p>Also available for iOS and Android.</p></span>
         </div>
       </div>
     );

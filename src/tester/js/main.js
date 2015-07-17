@@ -147,6 +147,22 @@ $(function () {
             }
         },
 
+        "play-paused-offset (Mission: Impossible - Rogue Nation) ": {
+            "method": "ms.channel.emit",
+            "params": {
+                "event": "play",
+                "data": {
+                    "id" : "129378641982734",
+                    "title": "Mission: Impossible - Rogue Nation",
+                    "duration": 151,
+                    "time": 100,
+                    "state": "paused",
+                    "file": "https://s3.amazonaws.com/dev-multiscreen-video-library/trailers/MissionImpossible5_TLR-2_5.1-1080p-HDTN.mp4",
+                },
+                "to": "broadcast"
+            }
+        },
+
         "stop": {
             "method": "ms.channel.emit",
             "params": {

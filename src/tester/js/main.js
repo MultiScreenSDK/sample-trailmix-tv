@@ -147,6 +147,20 @@ $(function () {
             }
         },
 
+        "play (Star Wars) ": {
+            "method": "ms.channel.emit",
+            "params": {
+                "event": "play",
+                "data": {
+                    "id" : "129378641982735",
+                    "title": "Star Wars",
+                    "duration": 212,
+                    "file": "http://cdn.videos.dolimg.com/xd_shortform/sws/lf01077/d1097a-hlf01077_psws-sws_7-comic-con-2015-reel-h264m_aac_848x480_904x96.mp4",
+                },
+                "to": "broadcast"
+            }
+        },
+
         "play-paused-offset (Mission: Impossible - Rogue Nation) ": {
             "method": "ms.channel.emit",
             "params": {

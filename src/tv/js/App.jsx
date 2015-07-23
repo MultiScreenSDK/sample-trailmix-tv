@@ -8,7 +8,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       video: null,
-      play: true,
+      playerState: null,
       currentTime: 0,
       seekTime: -1,
       volume: 1.0,
@@ -24,7 +24,7 @@ export default class App extends React.Component {
       title: this.state.video.title,
       duration: this.state.video.duration,
       id: this.state.video.id,
-      state: this.state.play? 'playing' : 'paused',
+      state: this.state.playerState,
       time: this.state.currentTime,
       volume: this.state.volume
     } : {};
@@ -53,8 +53,7 @@ export default class App extends React.Component {
 
   play(video) {
     console.log('play: ' + video.id);
-    var state = !(video.state === 'paused');
-    this.setState({video: video, play: state, seekTime: video.time});
+    this.setState({video: video, playerState: video.state || 'playing', seekTime: video.time});
   }
 
   stop() {
@@ -64,12 +63,12 @@ export default class App extends React.Component {
 
   pause() {
     console.log('pause');
-    this.setState({play: false});
+    this.setState({playerState: 'paused'});
   }
 
   resume() {
     console.log('play');
-    this.setState({play: true});
+    this.setState({playerState: 'playing'});
   }
 
   seek(seekTime) {
@@ -94,7 +93,8 @@ export default class App extends React.Component {
 
   _onVideoEnded() {
     console.log('** Video Ended **');
-    // this.setState({video: null});
+    this.setState({playerState: 'ended'});
+    this.channel.publish('videoEnd', this.state.video.id, 'broadcast');
   }
 
   _onTimeUpdate(currentTime) {
@@ -119,15 +119,15 @@ export default class App extends React.Component {
         <VideoPlayer
           ref="audioPlayer"
           video={video}
-          play={this.state.play}
+          play={this.state.playerState === 'playing'}
           seekTime={this.state.seekTime}
           volume={this.state.volume}
           onVideoEnded={this._onVideoEnded.bind(this)}
           onTimeUpdate={this._onTimeUpdate.bind(this)}
           resetSeek={this._resetSeek.bind(this)}
           controls={this.props.params} />
-        <StatusIcon play={this.state.play} />
-        <VideoInfo video={video} play={this.state.play} />
+        <StatusIcon play={this.state.playerState === 'playing'} />
+        <VideoInfo video={video} play={this.state.playerState === 'playing'} />
         <progress max={video.duration} value={this.state.currentTime}></progress>
       </div>
     );

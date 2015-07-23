@@ -1,8 +1,8 @@
-# Trailmix
+# TrailMix
 
-Trailmix is a sample video app for casting videos to Samsung Samsung 2015 TVs.
-It demonstrates how to cast and control videos from smartphones (Android, iOS and Web)
-to Samsung TVs using Samsung Multiscreen APIs.
+Trailmix is a sample video app for casting videos to Samsung 2015 TVs.
+It demonstrates how to cast and control videos from smartphones (Android and iOS)
+to Samsung TVs using the Samsung Multiscreen APIs.
 
 The following models are supported: For 2015 TVs
 J4500, J5500 and above, (Except for J6200). Models 110S9 are also compatible.

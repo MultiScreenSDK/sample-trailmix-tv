@@ -110,7 +110,7 @@ export default class App extends React.Component {
 
     if (!video) return (
           <div id="trailmix-app">
-            <IdleScreen app={this} />
+            <IdleScreen deviceName={this.state.deviceName} />
           </div>
         );
 
@@ -141,10 +141,10 @@ var IdleScreen = React.createClass({
     return (
       <div id="idle-screen">
         <div id="tv-info">
-          <p>{this.props.app.deviceName}</p>
-          <p>{this.props.app.ssid? 'On ' + this.props.app.ssid : ''}</p>
+          {this.props.deviceName}
         </div>
         <div id="app-info">
+          Mobile App is available on iOS and Android
         </div>
       </div>
     );

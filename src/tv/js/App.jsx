@@ -15,6 +15,7 @@ export default class App extends React.Component {
       deviceName: null,
       ssid: null
     };
+
     this.channel = null;
     this.clients = 0;
   }
